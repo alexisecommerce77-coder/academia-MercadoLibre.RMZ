@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alex Ramz — Academia</title>
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#f6f7f9,#0d0f12);--surface:light-dark(#fff,#15181d);--surface2:light-dark(#f0f2f5,#1c2027);--text:light-dark(#111318,#f4f5f7);--muted:light-dark(#6b7280,#9aa3b2);--line:light-dark(#e5e7eb,#2b3038);--accent:#111827;--accentText:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+#app{min-height:100vh;background:var(--bg)}
+.lock{min-height:100vh;display:grid;place-items:center;padding:24px}.box{width:min(430px,100%);background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:0 20px 60px #00000018}.logo{width:48px;height:48px;border-radius:14px;background:var(--accent);color:var(--accentText);display:grid;place-items:center;font-weight:800;margin-bottom:28px}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--muted);font-weight:700}.box h1{font-size:30px;line-height:1.05;margin:10px 0}.box p{color:var(--muted);line-height:1.55}.field{display:flex;gap:8px;margin-top:24px}.field input{flex:1;min-width:0;padding:14px 15px;border:1px solid var(--line);border-radius:12px;background:var(--surface2);color:var(--text);outline:none}.field input:focus{border-color:#777}.btn{border:0;border-radius:12px;padding:0 18px;background:var(--accent);color:var(--accentText);font-weight:700;cursor:pointer}.error{height:20px;color:#dc2626;font-size:13px;margin-top:10px}
+header{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:5}.nav{width:min(1120px,calc(100% - 40px));margin:auto;height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;font-size:18px}.user{font-size:13px;color:var(--muted)}main{width:min(1120px,calc(100% - 40px));margin:0 auto;padding:56px 0 80px}.hero{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:36px}.hero h1{font-size:clamp(34px,5vw,58px);line-height:.98;letter-spacing:-.045em;margin:8px 0 14px}.hero p{max-width:650px;color:var(--muted);font-size:17px;line-height:1.55;margin:0}.pill{display:inline-flex;padding:8px 11px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);font-size:12px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;min-height:220px;display:flex;flex-direction:column}.num{font-size:12px;color:var(--muted);font-weight:700}.card h2{font-size:22px;margin:28px 0 8px;letter-spacing:-.02em}.card p{color:var(--muted);line-height:1.5;margin:0 0 22px}.card button{margin-top:auto;width:100%;padding:12px;border-radius:11px;border:1px solid var(--line);background:var(--surface2);color:var(--text);font-weight:700;cursor:pointer}.card button:hover{filter:brightness(.96)}.note{margin-top:24px;padding:18px 20px;border:1px dashed var(--line);border-radius:16px;color:var(--muted);font-size:13px;line-height:1.5}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.hero{display:block}.hero .pill{margin-top:22px}.box{padding:28px}.field{display:block}.field input{width:100%;margin-bottom:10px}.field .btn{height:48px;width:100%}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const PASSWORD="ALEX2026";
+const courses=[
+ {n:"01",title:"Método de venta online",desc:"Aprende el proceso completo para detectar oportunidades y convertirlas en ventas."},
+ {n:"02",title:"Mercado Libre desde cero",desc:"Publicaciones, estrategia, métricas y procesos para comenzar a vender con claridad."},
+ {n:"03",title:"Arbitraje y reventa",desc:"Descubre cómo encontrar productos, calcular márgenes y validar oportunidades antes de invertir."},
+ {n:"04",title:"Contenido que vende",desc:"Crea contenido con mejores hooks, retención y llamadas a la acción para atraer compradores."},
+ {n:"05",title:"IA para emprendedores",desc:"Usa inteligencia artificial para investigar, crear contenido y acelerar tareas de tu negocio."},
+ {n:"06",title:"Finanzas y crecimiento",desc:"Controla tu dinero, reinvierte con estrategia y construye un negocio sostenible."}
+];
+function lock(){app.innerHTML=`<section class="lock"><div class="box"><div class="logo">AR</div><div class="eyebrow">Alex Ramz · Área privada</div><h1>Bienvenido a tu academia.</h1><p>Tu espacio privado para aprender negocios, e-commerce, IA y crecimiento.</p><div class="field"><input id="pw" type="password" placeholder="Contraseña" autocomplete="off"><button class="btn" onclick="login()">Entrar</button></div><div id="err" class="error"></div></div></section>`;pw.focus();pw.addEventListener('keydown',e=>{if(e.key==='Enter')login()})}
+function login(){if(pw.value===PASSWORD){sessionStorage.setItem('courseAccess','1');home()}else err.textContent='Contraseña incorrecta. Inténtalo de nuevo.'}
+function home(){app.innerHTML=`<header><nav class="nav"><div class="brand">ALEX RAMZ <span style="font-weight:500;color:var(--muted)">ACADEMIA</span></div><div class="user">Acceso privado · <a href="#" onclick="logout();return false" style="color:inherit">Salir</a></div></nav></header><main><div class="hero"><div><span class="pill">ALEX RAMZ · ACADEMIA</span><h1>Aprende.<br>Aplica. Crece.</h1><p>Un espacio privado para aprender a vender online, construir negocios y usar herramientas que te permitan avanzar más rápido.</p></div><span class="pill">${courses.length} módulos</span></div><section class="grid">${courses.map(c=>`<article class="card"><div class="num">MÓDULO ${c.n}</div><h2>${c.title}</h2><p>${c.desc}</p><button onclick="${c.n==='01'?'window.location.href=\'modulo-1.html\'':\"alert('Este módulo estará disponible próximamente.')\"}">Ver módulo</button></article>`).join('')}</section><div class="note"><strong>Tu progreso:</strong> este será tu centro de aprendizaje. Podemos añadir videos, PDFs, progreso por lección, materiales descargables y módulos desbloqueables.</div></main>`}
+function logout(){sessionStorage.removeItem('courseAccess');lock()}
+sessionStorage.getItem('courseAccess')==='1'?home():lock();
+</script>
+</body></html>
